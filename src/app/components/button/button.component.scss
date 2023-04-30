@@ -1,0 +1,40 @@
+
+$primary: #17a2b8;
+$secondary: #28a745;
+$tertiary: #ffc107;
+
+.button {
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: none;
+    background-color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    color: #fff;
+    &:hover{
+        opacity: 0.8;
+        transition: opacity 1s;
+    }
+}
+
+.primary {
+    background-color: $primary;
+}
+
+.secondary{
+    background-color: $secondary;
+}
+
+.tertiary{
+    background-color: $tertiary;
+}
+
+.medium{
+    width: 50%;
+}
+
+.large{
+    width: 100%;
+}
