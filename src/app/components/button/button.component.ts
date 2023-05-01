@@ -12,7 +12,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 export class ButtonComponent {
 
-  @Input() public label: string = 'Button';
+  @Input() public label: string = '';
   @Input() public type: 'primary' | 'secondary' | 'tertiary' = 'primary';
   @Input() public size: 'small' | 'medium' | 'large' = 'small';
   @Input() public typeButton: 'submit' | 'button' = 'button';

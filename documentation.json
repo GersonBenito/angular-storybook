@@ -22,7 +22,7 @@
     "components": [
         {
             "name": "AppComponent",
-            "id": "component-AppComponent-b21fce7db99a5eb565e42d7639d7a048bf27610f99e0ba6a40bee1f2a6965007c4d57d9af911a5f7722567855c2bdfd0cdb74b2a8d4a3647ffc47a3dd0839ffc",
+            "id": "component-AppComponent-784bbc61b00fdd80c3e3e17e33c1627891fb8ebde85db8861e93bca6506a8304385945519365e069f981428a41083c88b28898b78b6c6669ac0ea6b5b30c7ec3",
             "file": "src/app/app.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -52,7 +52,18 @@
                     "line": 9
                 }
             ],
-            "methodsClass": [],
+            "methodsClass": [
+                {
+                    "name": "action",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 11,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -60,7 +71,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'app-root',\n  templateUrl: './app.component.html',\n  styleUrls: ['./app.component.scss']\n})\nexport class AppComponent {\n  title = 'angular-storybook';\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'app-root',\n  templateUrl: './app.component.html',\n  styleUrls: ['./app.component.scss']\n})\nexport class AppComponent {\n  title = 'angular-storybook';\n\n  action(){\n    console.log('click card');\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -69,7 +80,7 @@
                 }
             ],
             "stylesData": "",
-            "templateData": "<!-- componente button creado con stotybook -->\n<app-button label=\"Iniciar sesion\" type=\"primary\" size=\"small\"/>"
+            "templateData": "<!-- componente button creado con stotybook -->\n<app-button label=\"Iniciar sesion\" typeButton=\"button\" type=\"primary\" size=\"small\" (onClick)=\"action()\"/><br/><br/>\n<app-button label=\"Iniciar sesion\" typeButton=\"button\" type=\"secondary\" size=\"medium\" (onClick)=\"action()\"/><br/><br/>\n<app-button label=\"Iniciar sesion\" typeButton=\"button\" type=\"tertiary\" size=\"large\" (onClick)=\"action()\"/><br/><br/>\n<app-card title=\"tes card\" description=\"este es un test\" [showButton]=\"true\" type=\"regular\" [action]=\"action\" />"
         },
         {
             "name": "ButtonComponent",
@@ -197,7 +208,7 @@
         },
         {
             "name": "ButtonComponent",
-            "id": "component-ButtonComponent-e370be285424f8a71f82c667b0c6028fd9134c93502a0576e740f398847bf145bee7f5d1514161b49e273d22715429b2445c3aed192115f34d1011c4c330afea-1",
+            "id": "component-ButtonComponent-f0f40d33ea1d5188749a43db9ac312d4a4b114d07901b7e1d350abc48fccd77f50f955fdc5818838df1877cecf12748c5f0e8de62c988057456193480580e182-1",
             "file": "src/app/components/button/button.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -216,7 +227,7 @@
             "inputsClass": [
                 {
                     "name": "label",
-                    "defaultValue": "'Button'",
+                    "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 15,
@@ -240,11 +251,40 @@
                     "line": 16,
                     "type": "\"primary\" | \"secondary\" | \"tertiary\"",
                     "decorators": []
+                },
+                {
+                    "name": "typeButton",
+                    "defaultValue": "'button'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 18,
+                    "type": "\"submit\" | \"button\"",
+                    "decorators": []
                 }
             ],
-            "outputsClass": [],
+            "outputsClass": [
+                {
+                    "name": "onClick",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 19,
+                    "type": "EventEmitter"
+                }
+            ],
             "propertiesClass": [],
-            "methodsClass": [],
+            "methodsClass": [
+                {
+                    "name": "actionButton",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 28,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -252,11 +292,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\n\n// agregar clases dinamicas\n// const getStyles = (...args: string[]) => ['button', ...args].filter(Boolean);\n\n@Component({\n  selector: 'app-button',\n  templateUrl: './button.component.html',\n  styleUrls: ['./button.component.scss']\n})\n\n\nexport class ButtonComponent {\n\n  @Input() public label: string = 'Button';\n  @Input() public type: 'primary' | 'secondary' | 'tertiary' = 'primary';\n  @Input() public size: 'small' | 'medium' | 'large' = 'small';\n\n  // agregar clases dinamicas\n  public get classes(): string[] {\n    // return getStyles(this.type);\n    return ['button', this.type, this.size]\n  }\n\n}\n\n\n",
+            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\n\n// agregar clases dinamicas\n// const getStyles = (...args: string[]) => ['button', ...args].filter(Boolean);\n\n@Component({\n  selector: 'app-button',\n  templateUrl: './button.component.html',\n  styleUrls: ['./button.component.scss']\n})\n\n\nexport class ButtonComponent {\n\n  @Input() public label: string = '';\n  @Input() public type: 'primary' | 'secondary' | 'tertiary' = 'primary';\n  @Input() public size: 'small' | 'medium' | 'large' = 'small';\n  @Input() public typeButton: 'submit' | 'button' = 'button';\n  @Output() public onClick = new EventEmitter<Event>();\n  // @Output() public onAction: EventEmitter<any> = new EventEmitter();\n\n  // agregar clases dinamicas\n  public get classes(): string[] {\n    // return getStyles(this.type);\n    return ['button', this.type, this.size];\n  }\n\n  actionButton(){\n    this.onClick.emit();\n  }\n\n}\n\n\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "\r\n$primary: #17a2b8;\r\n$secondary: #28a745;\r\n$tertiary: #ffc107;\r\n\r\n.button {\r\n    padding: 8px 16px;\r\n    border-radius: 8px;\r\n    border: none;\r\n    background-color: #fff;\r\n    font-family: 'Poppins', sans-serif;\r\n    font-weight: 500;\r\n    cursor: pointer;\r\n    letter-spacing: 0.5px;\r\n    color: #fff;\r\n    &:hover{\r\n        opacity: 0.8;\r\n        transition: opacity 1s;\r\n    }\r\n}\r\n\r\n.primary {\r\n    background-color: $primary;\r\n}\r\n\r\n.secondary{\r\n    background-color: $secondary;\r\n}\r\n\r\n.tertiary{\r\n    background-color: $tertiary;\r\n}\r\n\r\n.medium{\r\n    width: 50%;\r\n}\r\n\r\n.large{\r\n    width: 100%;\r\n}",
+                    "data": "\r\n$primary: #17a2b8;\r\n$secondary: #28a745;\r\n$tertiary: #ffc107;\r\n\r\n.button {\r\n    padding: 8px 16px;\r\n    border-radius: 5px;\r\n    border: none;\r\n    background-color: #fff;\r\n    font-family: 'Poppins', sans-serif;\r\n    font-weight: 500;\r\n    cursor: pointer;\r\n    letter-spacing: 0.5px;\r\n    color: #fff;\r\n    &:hover{\r\n        opacity: 0.8;\r\n        transition: opacity 1s;\r\n    }\r\n}\r\n\r\n.primary {\r\n    background-color: $primary;\r\n}\r\n\r\n.secondary{\r\n    background-color: $secondary;\r\n}\r\n\r\n.tertiary{\r\n    background-color: $tertiary;\r\n}\r\n\r\n.medium{\r\n    width: 50%;\r\n}\r\n\r\n.large{\r\n    width: 100%;\r\n}",
                     "styleUrl": "./button.component.scss"
                 }
             ],
@@ -268,18 +308,18 @@
                         "name": "classes",
                         "type": "[]",
                         "returnType": "string[]",
-                        "line": 20
+                        "line": 23
                     }
                 }
             },
             "isDuplicate": true,
             "duplicateId": 1,
             "duplicateName": "ButtonComponent-1",
-            "templateData": "<button [ngClass]=\"classes\">{{label}}</button>"
+            "templateData": "<button [type]=\"typeButton\" [ngClass]=\"classes\" (click)=\"actionButton()\">{{label}}</button>"
         },
         {
             "name": "CardComponent",
-            "id": "component-CardComponent-0b505ef93ada55fbc7cb0cf34a3f6860d9c19fbbdfc7714449018ec4cf33b2806dc72156f33c099e598e2ffe67178ef1fbc4d34c39d95e35419c74ccc7bfcd1c",
+            "id": "component-CardComponent-ee5da44a62e0b17bc24fcaf4ea6d28bbdac70c43366359c5959235e0e1e2ca4b4b4ec6fa43b7cb48d82f8ae62b6f32f2194f9f7692cf7051500d8b714e8e868e",
             "file": "src/app/components/card/card.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -295,7 +335,88 @@
                 "./card.component.html"
             ],
             "viewProviders": [],
-            "inputsClass": [],
+            "inputsClass": [
+                {
+                    "name": "action",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 18,
+                    "type": "any",
+                    "decorators": []
+                },
+                {
+                    "name": "description",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 11,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "height",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 16,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "image",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 12,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "responsive",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 15,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "showButton",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 13,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "title",
+                    "defaultValue": "'title card'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 10,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "type",
+                    "defaultValue": "'regular'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 14,
+                    "type": "\"regular\" | \"card-image\"",
+                    "decorators": []
+                },
+                {
+                    "name": "width",
+                    "defaultValue": "'30rem'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 17,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
             "outputsClass": [],
             "propertiesClass": [],
             "methodsClass": [],
@@ -306,16 +427,27 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'app-card',\n  templateUrl: './card.component.html',\n  styleUrls: ['./card.component.scss']\n})\nexport class CardComponent {\n\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\n\n@Component({\n  selector: 'app-card',\n  templateUrl: './card.component.html',\n  styleUrls: ['./card.component.scss']\n})\nexport class CardComponent {\n\n  @Input() public title: string = 'title card';\n  @Input() public description: string = '';\n  @Input() public image: string = '';\n  @Input() public showButton: boolean = true;\n  @Input() public type: 'regular' | 'card-image' = 'regular';\n  @Input() public responsive: boolean = false;\n  @Input() public height: string = '';\n  @Input() public width: string = '30rem';\n  @Input() public action: any;\n\n  public get classes(): string[]{\n    return ['card', this.type, this.responsive ? 'responsive' : ''];\n  }\n\n  // action(){\n  //   console.log('click');\n    \n  // }\n\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "",
+                    "data": ".card{\r\n    border: 1px solid rgb(203, 197, 197);\r\n    border-radius: 5px;\r\n    .content{\r\n        padding: 8px;\r\n        .title-card{\r\n            font-size: 24px;\r\n            font-family: 'Poppins', sans-serif;\r\n            font-weight: 500;\r\n            letter-spacing: 0.1px;\r\n            line-height: 36px;\r\n        }\r\n        .description-card{\r\n            font-size: 14px;\r\n            font-family: 'Poppins', sans-serif;\r\n            letter-spacing: 0.1px;\r\n            line-height: 24px;\r\n        }\r\n    }\r\n    .content-button{\r\n        text-align: center;\r\n    }\r\n}\r\n\r\n.content-imagen{\r\n    img{\r\n        width: 100%;\r\n        border-radius: 5px 5px 0px 0px;\r\n    }\r\n}",
                     "styleUrl": "./card.component.scss"
                 }
             ],
             "stylesData": "",
-            "templateData": "<p>card works!</p>\n"
+            "accessors": {
+                "classes": {
+                    "name": "classes",
+                    "getSignature": {
+                        "name": "classes",
+                        "type": "[]",
+                        "returnType": "string[]",
+                        "line": 20
+                    }
+                }
+            },
+            "templateData": "<div [ngClass]=\"classes\" [ngStyle]=\"{'heigth': height, 'width': width}\">\n    <div class=\"content-imagen\" *ngIf=\"type === 'card-image'\">\n        <img [src]=\"image\" [alt]=\"title\">\n    </div>\n    <div class=\"content\">\n        <div class=\"title-card\">{{title}}</div>\n        <div class=\"description-card\">{{description}}</div>\n    </div>\n    <div class=\"content-button\" *ngIf=\"showButton\">\n        <app-button label=\"Adquirir\" type=\"primary\" typeButton=\"button\" size=\"large\" (onClick)=\"action()\" />\n    </div>\n</div>"
         },
         {
             "name": "HeaderComponent",
@@ -563,6 +695,26 @@
     "miscellaneous": {
         "variables": [
             {
+                "name": "cardImage",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/card/card.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n    args: {\r\n        title: 'Card title',\r\n        description: 'card description',\r\n        height: '',\r\n        width: '30rem',\r\n        image: 'https://wwwhatsnew.com/wp-content/uploads/2022/10/Estos-son-los-10-mejores-sistemas-para-pasar-de-texto-a-imagen.jpg',\r\n        showButton: true,\r\n    }\r\n}"
+            },
+            {
+                "name": "cardRegular",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/card/card.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n    args: {\r\n        title: 'Card title',\r\n        description: 'card description',\r\n        height: '',\r\n        width: '30rem',\r\n        showButton: true,\r\n    }\r\n}"
+            },
+            {
                 "name": "Large",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -579,8 +731,8 @@
                 "file": "src/stories/button/button.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "",
-                "defaultValue": "Template.bind({})"
+                "type": "Story",
+                "defaultValue": "{\r\n    args: {\r\n        label: 'Button',\r\n        size: 'large'\r\n    }\r\n}"
             },
             {
                 "name": "LoggedIn",
@@ -629,8 +781,8 @@
                 "file": "src/stories/button/button.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "",
-                "defaultValue": "Template.bind({})"
+                "type": "Story",
+                "defaultValue": "{\r\n    args: {\r\n        label: 'Button',\r\n        size: 'medium'\r\n    }\r\n}"
             },
             {
                 "name": "meta",
@@ -689,8 +841,8 @@
                 "file": "src/stories/button/button.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "",
-                "defaultValue": "Template.bind({})"
+                "type": "Story",
+                "defaultValue": "{\r\n    args: {\r\n        label: 'Primary',\r\n        type: 'primary'\r\n    }\r\n}"
             },
             {
                 "name": "Secondary",
@@ -709,8 +861,8 @@
                 "file": "src/stories/button/button.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "",
-                "defaultValue": "Template.bind({})"
+                "type": "Story",
+                "defaultValue": "{\r\n    args: {\r\n        label: 'Secondary',\r\n        type: 'secondary'\r\n    }\r\n}"
             },
             {
                 "name": "Small",
@@ -729,18 +881,28 @@
                 "file": "src/stories/button/button.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "",
-                "defaultValue": "Template.bind({})"
+                "type": "Story",
+                "defaultValue": "{\r\n    args: {\r\n        label: 'Button',\r\n        size: 'small'\r\n    }\r\n}"
             },
             {
-                "name": "Template",
+                "name": "template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "src/stories/button/button.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "StoryFn<ButtonComponent>",
-                "defaultValue": "(args: ButtonComponent) => ({\r\n    props: args\r\n})"
+                "type": "Meta<ButtonComponent>",
+                "defaultValue": "{\r\n   title: 'Components/Button',\r\n   tags: ['autodocs'],\r\n   component: ButtonComponent,\r\n   render: (args: ButtonComponent) => ({props: args}),\r\n   args: {}\r\n}"
+            },
+            {
+                "name": "template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/card/card.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<CardComponent>",
+                "defaultValue": "{\r\n    title: 'Components/Card',\r\n    tags: ['autodocs'],\r\n    component: CardComponent,\r\n    render: (args: CardComponent) => ({props: args}),\r\n    decorators: [\r\n        moduleMetadata({\r\n            declarations: [ButtonComponent],\r\n            imports: [CommonModule]\r\n        })\r\n    ],\r\n    args: {}\r\n}"
             },
             {
                 "name": "Tertiary",
@@ -749,8 +911,8 @@
                 "file": "src/stories/button/button.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "",
-                "defaultValue": "Template.bind({})"
+                "type": "Story",
+                "defaultValue": "{\r\n    args: {\r\n        label: 'Tertiary',\r\n        type: 'tertiary'\r\n    }\r\n}"
             }
         ],
         "functions": [],
@@ -787,10 +949,64 @@
                 "deprecationMessage": "",
                 "description": "",
                 "kind": 177
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<ButtonComponent>",
+                "file": "src/stories/button/button.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 177
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<CardComponent>",
+                "file": "src/stories/card/card.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 177
             }
         ],
         "enumerations": [],
         "groupedVariables": {
+            "src/stories/card/card.component.stories.ts": [
+                {
+                    "name": "cardImage",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/card/card.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n    args: {\r\n        title: 'Card title',\r\n        description: 'card description',\r\n        height: '',\r\n        width: '30rem',\r\n        image: 'https://wwwhatsnew.com/wp-content/uploads/2022/10/Estos-son-los-10-mejores-sistemas-para-pasar-de-texto-a-imagen.jpg',\r\n        showButton: true,\r\n    }\r\n}"
+                },
+                {
+                    "name": "cardRegular",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/card/card.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n    args: {\r\n        title: 'Card title',\r\n        description: 'card description',\r\n        height: '',\r\n        width: '30rem',\r\n        showButton: true,\r\n    }\r\n}"
+                },
+                {
+                    "name": "template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/card/card.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<CardComponent>",
+                    "defaultValue": "{\r\n    title: 'Components/Card',\r\n    tags: ['autodocs'],\r\n    component: CardComponent,\r\n    render: (args: CardComponent) => ({props: args}),\r\n    decorators: [\r\n        moduleMetadata({\r\n            declarations: [ButtonComponent],\r\n            imports: [CommonModule]\r\n        })\r\n    ],\r\n    args: {}\r\n}"
+                }
+            ],
             "src/stories/Button.stories.ts": [
                 {
                     "name": "Large",
@@ -851,8 +1067,8 @@
                     "file": "src/stories/button/button.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
+                    "type": "Story",
+                    "defaultValue": "{\r\n    args: {\r\n        label: 'Button',\r\n        size: 'large'\r\n    }\r\n}"
                 },
                 {
                     "name": "Medium",
@@ -861,8 +1077,8 @@
                     "file": "src/stories/button/button.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
+                    "type": "Story",
+                    "defaultValue": "{\r\n    args: {\r\n        label: 'Button',\r\n        size: 'medium'\r\n    }\r\n}"
                 },
                 {
                     "name": "Primary",
@@ -871,8 +1087,8 @@
                     "file": "src/stories/button/button.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
+                    "type": "Story",
+                    "defaultValue": "{\r\n    args: {\r\n        label: 'Primary',\r\n        type: 'primary'\r\n    }\r\n}"
                 },
                 {
                     "name": "Secondary",
@@ -881,8 +1097,8 @@
                     "file": "src/stories/button/button.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
+                    "type": "Story",
+                    "defaultValue": "{\r\n    args: {\r\n        label: 'Secondary',\r\n        type: 'secondary'\r\n    }\r\n}"
                 },
                 {
                     "name": "Small",
@@ -891,18 +1107,18 @@
                     "file": "src/stories/button/button.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
+                    "type": "Story",
+                    "defaultValue": "{\r\n    args: {\r\n        label: 'Button',\r\n        size: 'small'\r\n    }\r\n}"
                 },
                 {
-                    "name": "Template",
+                    "name": "template",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "src/stories/button/button.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "StoryFn<ButtonComponent>",
-                    "defaultValue": "(args: ButtonComponent) => ({\r\n    props: args\r\n})"
+                    "type": "Meta<ButtonComponent>",
+                    "defaultValue": "{\r\n   title: 'Components/Button',\r\n   tags: ['autodocs'],\r\n   component: ButtonComponent,\r\n   render: (args: ButtonComponent) => ({props: args}),\r\n   args: {}\r\n}"
                 },
                 {
                     "name": "Tertiary",
@@ -911,8 +1127,8 @@
                     "file": "src/stories/button/button.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
+                    "type": "Story",
+                    "defaultValue": "{\r\n    args: {\r\n        label: 'Tertiary',\r\n        type: 'tertiary'\r\n    }\r\n}"
                 }
             ],
             "src/stories/Header.stories.ts": [
@@ -1033,6 +1249,32 @@
                     "description": "",
                     "kind": 177
                 }
+            ],
+            "src/stories/button/button.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<ButtonComponent>",
+                    "file": "src/stories/button/button.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 177
+                }
+            ],
+            "src/stories/card/card.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<CardComponent>",
+                    "file": "src/stories/card/card.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 177
+                }
             ]
         }
     },
@@ -1051,7 +1293,7 @@
         ]
     },
     "coverage": {
-        "count": 3,
+        "count": 2,
         "status": "low",
         "files": [
             {
@@ -1070,7 +1312,7 @@
                 "linktype": "component",
                 "name": "AppComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/2",
+                "coverageCount": "0/3",
                 "status": "low"
             },
             {
@@ -1079,7 +1321,7 @@
                 "linktype": "component",
                 "name": "ButtonComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/4",
+                "coverageCount": "0/7",
                 "status": "low"
             },
             {
@@ -1088,7 +1330,7 @@
                 "linktype": "component",
                 "name": "CardComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/1",
+                "coverageCount": "0/10",
                 "status": "low"
             },
             {
@@ -1274,7 +1516,7 @@
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
-                "name": "Template",
+                "name": "template",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
@@ -1285,6 +1527,36 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "Tertiary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/card/card.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "cardImage",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/card/card.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "cardRegular",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/card/card.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "template",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"

@@ -17,7 +17,15 @@ Run `npm run storybook` for a dev server. Navigate to `http://localhost:6006/`. 
 ![7](./src/assets/img/7.png)
 ![8](./src/assets/img/8.png)
 ![9](./src/assets/img/9.png)
+![11](./src/assets/img/11.png)
+![12](./src/assets/img/12.png)
+![13](./src/assets/img/13.png)
+![14](./src/assets/img/14.png)
+
 
 ## Components in Angular
 ![10](./src/assets/img/10.png)
+![15](./src/assets/img/15.png)
+
+
 

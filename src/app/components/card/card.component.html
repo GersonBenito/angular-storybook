@@ -1,1 +1,12 @@
-<p>card works!</p>
+<div [ngClass]="classes" [ngStyle]="{'heigth': height, 'width': width}">
+    <div class="content-imagen" *ngIf="type === 'card-image'">
+        <img [src]="image" [alt]="title">
+    </div>
+    <div class="content">
+        <div class="title-card">{{title}}</div>
+        <div class="description-card">{{description}}</div>
+    </div>
+    <div class="content-button" *ngIf="showButton">
+        <app-button label="Adquirir" type="primary" typeButton="button" size="large" (onClick)="action()" />
+    </div>
+</div>

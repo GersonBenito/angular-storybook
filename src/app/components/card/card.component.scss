@@ -1,0 +1,30 @@
+.card{
+    border: 1px solid rgb(203, 197, 197);
+    border-radius: 5px;
+    .content{
+        padding: 8px;
+        .title-card{
+            font-size: 24px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            letter-spacing: 0.1px;
+            line-height: 36px;
+        }
+        .description-card{
+            font-size: 14px;
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: 0.1px;
+            line-height: 24px;
+        }
+    }
+    .content-button{
+        text-align: center;
+    }
+}
+
+.content-imagen{
+    img{
+        width: 100%;
+        border-radius: 5px 5px 0px 0px;
+    }
+}
