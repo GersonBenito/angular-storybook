@@ -2,7 +2,7 @@
 
 ## Development server for angular
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Run `ng serve or ng s -o` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
 ## Development server for Storybook
 Run `npm run storybook` for a dev server. Navigate to `http://localhost:6006/`. The application will automatically reload if you change any of the source files.
