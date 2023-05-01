@@ -2,7 +2,7 @@ import { Meta, StoryObj } from "@storybook/angular";
 import { ButtonComponent } from "src/app/components/button/button.component";
 
 const template: Meta<ButtonComponent> = {
-   title: 'Components/button',
+   title: 'Components/Button',
    tags: ['autodocs'],
    component: ButtonComponent,
    render: (args: ButtonComponent) => ({props: args}),
