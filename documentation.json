@@ -69,7 +69,7 @@
                 }
             ],
             "stylesData": "",
-            "templateData": ""
+            "templateData": "<!-- componente button creado con stotybook -->\n<app-button label=\"Iniciar sesion\" type=\"primary\" size=\"small\"/>"
         },
         {
             "name": "ButtonComponent",
@@ -197,7 +197,7 @@
         },
         {
             "name": "ButtonComponent",
-            "id": "component-ButtonComponent-aac5b4cd2618cd522c7d1e0c9ab6192c6df65fed877a484e7fc5a1e8a28504b3db9104637c2700797343f4efae6a1d108f172c3501e6a263963bb5e6883bb4c0-1",
+            "id": "component-ButtonComponent-e370be285424f8a71f82c667b0c6028fd9134c93502a0576e740f398847bf145bee7f5d1514161b49e273d22715429b2445c3aed192115f34d1011c4c330afea-1",
             "file": "src/app/components/button/button.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -216,11 +216,20 @@
             "inputsClass": [
                 {
                     "name": "label",
-                    "defaultValue": "''",
+                    "defaultValue": "'Button'",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 15,
                     "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "size",
+                    "defaultValue": "'small'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 17,
+                    "type": "\"small\" | \"medium\" | \"large\"",
                     "decorators": []
                 },
                 {
@@ -243,11 +252,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\n\n// agregar clases dinamicas\nconst getStyles = (...args: string[]) => ['button', ...args].filter(Boolean);\n\n@Component({\n  selector: 'app-button',\n  templateUrl: './button.component.html',\n  styleUrls: ['./button.component.scss']\n})\n\n\nexport class ButtonComponent {\n\n  @Input() public label: string = '';\n  @Input() public type: 'primary' | 'secondary' | 'tertiary' = 'primary';\n\n  // agregar clases dinamicas\n  public get classes(): string[] {\n    return getStyles(this.type);\n  }\n\n}\n\n\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\n\n// agregar clases dinamicas\n// const getStyles = (...args: string[]) => ['button', ...args].filter(Boolean);\n\n@Component({\n  selector: 'app-button',\n  templateUrl: './button.component.html',\n  styleUrls: ['./button.component.scss']\n})\n\n\nexport class ButtonComponent {\n\n  @Input() public label: string = 'Button';\n  @Input() public type: 'primary' | 'secondary' | 'tertiary' = 'primary';\n  @Input() public size: 'small' | 'medium' | 'large' = 'small';\n\n  // agregar clases dinamicas\n  public get classes(): string[] {\n    // return getStyles(this.type);\n    return ['button', this.type, this.size]\n  }\n\n}\n\n\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "\r\n\r\n.button {\r\n    padding: 8px 16px;\r\n    border-radius: 8px;\r\n    border: none;\r\n    background-color: #fff;\r\n    font-family: 'Poppins', sans-serif;\r\n    font-weight: 500;\r\n    cursor: pointer;\r\n    letter-spacing: 0.5px;\r\n}",
+                    "data": "\r\n$primary: #17a2b8;\r\n$secondary: #28a745;\r\n$tertiary: #ffc107;\r\n\r\n.button {\r\n    padding: 8px 16px;\r\n    border-radius: 8px;\r\n    border: none;\r\n    background-color: #fff;\r\n    font-family: 'Poppins', sans-serif;\r\n    font-weight: 500;\r\n    cursor: pointer;\r\n    letter-spacing: 0.5px;\r\n    color: #fff;\r\n    &:hover{\r\n        opacity: 0.8;\r\n        transition: opacity 1s;\r\n    }\r\n}\r\n\r\n.primary {\r\n    background-color: $primary;\r\n}\r\n\r\n.secondary{\r\n    background-color: $secondary;\r\n}\r\n\r\n.tertiary{\r\n    background-color: $tertiary;\r\n}\r\n\r\n.medium{\r\n    width: 50%;\r\n}\r\n\r\n.large{\r\n    width: 100%;\r\n}",
                     "styleUrl": "./button.component.scss"
                 }
             ],
@@ -259,7 +268,7 @@
                         "name": "classes",
                         "type": "[]",
                         "returnType": "string[]",
-                        "line": 19
+                        "line": 20
                     }
                 }
             },
@@ -554,16 +563,6 @@
     "miscellaneous": {
         "variables": [
             {
-                "name": "getStyles",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "src/app/components/button/button.component.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "",
-                "defaultValue": "(...args: string[]) => ['button', ...args].filter(Boolean)"
-            },
-            {
                 "name": "Large",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -572,6 +571,16 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n  args: {\n    size: 'large',\n    label: 'Button',\n  },\n}"
+            },
+            {
+                "name": "Large",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/button/button.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
             },
             {
                 "name": "LoggedIn",
@@ -612,6 +621,16 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n  render: (args: Page) => ({\n    props: args,\n  }),\n}"
+            },
+            {
+                "name": "Medium",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/button/button.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
             },
             {
                 "name": "meta",
@@ -704,6 +723,16 @@
                 "defaultValue": "{\n  args: {\n    size: 'small',\n    label: 'Button',\n  },\n}"
             },
             {
+                "name": "Small",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/button/button.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -762,18 +791,6 @@
         ],
         "enumerations": [],
         "groupedVariables": {
-            "src/app/components/button/button.component.ts": [
-                {
-                    "name": "getStyles",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/app/components/button/button.component.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "(...args: string[]) => ['button', ...args].filter(Boolean)"
-                }
-            ],
             "src/stories/Button.stories.ts": [
                 {
                     "name": "Large",
@@ -824,6 +841,78 @@
                     "deprecationMessage": "",
                     "type": "Story",
                     "defaultValue": "{\n  args: {\n    size: 'small',\n    label: 'Button',\n  },\n}"
+                }
+            ],
+            "src/stories/button/button.component.stories.ts": [
+                {
+                    "name": "Large",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/button/button.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Medium",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/button/button.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/button/button.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Secondary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/button/button.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Small",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/button/button.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/button/button.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "StoryFn<ButtonComponent>",
+                    "defaultValue": "(args: ButtonComponent) => ({\r\n    props: args\r\n})"
+                },
+                {
+                    "name": "Tertiary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/button/button.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
                 }
             ],
             "src/stories/Header.stories.ts": [
@@ -900,48 +989,6 @@
                     "deprecationMessage": "",
                     "type": "Preview",
                     "defaultValue": "{\n  parameters: {\n    actions: { argTypesRegex: \"^on[A-Z].*\" },\n    controls: {\n      matchers: {\n        color: /(background|color)$/i,\n        date: /Date$/,\n      },\n    },\n  },\n}"
-                }
-            ],
-            "src/stories/button/button.component.stories.ts": [
-                {
-                    "name": "Primary",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/button/button.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                },
-                {
-                    "name": "Secondary",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/button/button.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                },
-                {
-                    "name": "Template",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/button/button.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "StoryFn<ButtonComponent>",
-                    "defaultValue": "(args: ButtonComponent) => ({\r\n    props: args\r\n})"
-                },
-                {
-                    "name": "Tertiary",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/button/button.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
                 }
             ]
         },
@@ -1032,17 +1079,7 @@
                 "linktype": "component",
                 "name": "ButtonComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/3",
-                "status": "low"
-            },
-            {
-                "filePath": "src/app/components/button/button.component.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "getStyles",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
+                "coverageCount": "0/4",
                 "status": "low"
             },
             {
@@ -1187,6 +1224,26 @@
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
+                "name": "Large",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/button/button.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Medium",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/button/button.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
                 "name": "Primary",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
@@ -1198,6 +1255,16 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "Secondary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/button/button.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Small",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
